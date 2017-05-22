@@ -1,5 +1,13 @@
 const app = angular.module('GitHubActivityTrackerApp', []);
 
+app.component('user', {
+    templateUrl: 'templates/user.html',
+    controller: 'UserListController',
+    bindings: {
+        which: '<',
+    },
+})
+
 
 app.controller('UserListController', function ($scope, UserService) {
 
@@ -40,15 +48,14 @@ app.factory('UserService', function ($http) {
 
         addUser() {
             userList.push({
-                userInfo: {
-                    userName: '',
-                    name: '',
-                    pic: '',
-                    week: 0,
-                    month: 0,
-                    all: 0,
-                },
-                events: [],
+                userName: '',
+                name: '',
+                pic: '',
+                weekCount: 0,
+                weekGauge: '',
+                monthCount: 0,
+                monthGauge: '',
+                allCount: 0,
             });
         },
 
@@ -57,9 +64,9 @@ app.factory('UserService', function ($http) {
             c = count.num;
 
             $http.get('https://api.github.com/users/' + username).then(function (response) {
-                userList[c].userInfo.userName = response.data.login;
-                userList[c].userInfo.name = response.data.name;
-                userList[c].userInfo.pic = response.data.avatar_url;
+                userList[c].userName = response.data.login;
+                userList[c].name = response.data.name;
+                userList[c].pic = response.data.avatar_url;
             });
 
             
@@ -71,31 +78,23 @@ app.factory('UserService', function ($http) {
 
                     let date = moment(response.data[i].created_at).format('LL');
                     let today = moment(new Date()).format('LL');
-                    let weekOld = moment(today).subtract(7, 'days').format('LL');
-                    let monthOld = moment(today).subtract(1, 'month').format('LL');
+                    let weekAgo = moment(today).subtract(7, 'days').format('LL');
+                    let monthAgo = moment(today).subtract(1, 'month').format('LL');
 
-                    // console.log(today);
-                    // console.log(date);
-                    // console.log(weekOld);
-                    // if(moment(date).isBetween(weekOld, today)){console.log('true')};
-                    // console.log('-----------')
-
-                    if(moment(date).isBetween(weekOld, today)){
-                        userList[c].userInfo.week++;
-                        userList[c].userInfo.month++;
-                        userList[c].userInfo.all++;
-                    } else if(moment(date).isBetween(monthOld, today)){
-                        userList[c].userInfo.month++;
-                        userList[c].userInfo.all++;               
+                    if(moment(date).isBetween(weekAgo, today)){
+                        userList[c].weekCount++;
+                        userList[c].monthCount++;
+                        userList[c].allCount++;
+                    } else if(moment(date).isBetween(monthAgo, today)){
+                        userList[c].monthCount++;
+                        userList[c].allCount++;               
                     } else {
-                        userList[c].userInfo.all++;               
+                        userList[c].allCount++;               
                     }
                     
-                    userList[c].events.push(date);
                 };
-            });
 
-            console.log(userList);
+            });
 
         }
 

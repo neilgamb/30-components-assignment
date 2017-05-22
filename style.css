@@ -1,0 +1,102 @@
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: lightgray;
+}
+
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0px;
+}
+
+li img {
+    width:100px;
+    vertical-align: middle;
+    border-radius: 5px;
+}
+
+li div {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+p {
+    margin: 0px;
+    font-size: .8em;
+}
+
+#username {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+
+input[type=text] {
+    border: none;
+    height: 40px;
+    width: 200px;
+    padding-left: 10px;
+    font-size: 1.5em;
+    color: gray;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+    width: 30%;
+}
+
+
+.myButton {
+	background-color:#768d87;
+	border:none;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:11px 23px;
+	text-decoration:none;
+    position: relative;
+    bottom: 4px;
+    right: 5px;
+    height: 42px;
+}
+.myButton:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #6c7c7c), color-stop(1, #768d87));
+	background:-moz-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+	background:-webkit-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+	background:-o-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+	background:-ms-linear-gradient(top, #6c7c7c 5%, #768d87 100%);
+	background:linear-gradient(to bottom, #6c7c7c 5%, #768d87 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#6c7c7c', endColorstr='#768d87',GradientType=0);
+	background-color:#6c7c7c;
+}
+
+
+.search {
+    height: 42px;
+    background-color: darkgray;
+}
+
+::-webkit-input-placeholder { /* Chrome */
+  color: lightgray;
+}
+
+
+.high {
+    color: red;
+}
+
+.med {
+    color: yellow
+}
+
+

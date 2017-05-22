@@ -1,0 +1,11 @@
+<li>
+    <div class="pic">
+        <img ng-src="{{ $ctrl.which.pic }}">
+    </div>
+    <div class='info'>
+        <span id='username'>{{ $ctrl.which.userName }}</span>
+        <p>{{ $ctrl.which.name }}<p>
+        <p>week <i ng-class = "{'med' : $ctrl.which.weekCount > 4 && $ctrl.which.weekCount < 10, 'high' : $ctrl.which.weekCount > 10}" class="fa fa-circle" aria-hidden="true"></i> {{ $ctrl.which.weekCount }}
+        | month <i ng-class = "{'med' : $ctrl.which.monthCount > 15 && $ctrl.which.monthCount < 30, 'high' : $ctrl.which.monthCount > 30}" class="fa fa-circle" aria-hidden="true"></i> {{ $ctrl.which.monthCount }}
+    </div>
+</li>

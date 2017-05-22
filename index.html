@@ -5,29 +5,24 @@
 <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular.js"></script>
     <script src="js/app.js"></script>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <script src="http://momentjs.com/downloads/moment.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body ng-app="GitHubActivityTrackerApp">
     <h1>Github Activity Tracker</h1>
 
-    <section ng-controller="UserInputController">
+    <section class="search" ng-controller="UserInputController">
         <input type='text' placeholder="Enter Username" ng-model="user_input">
-        <button ng-click="add()">Add</button>
+        <button class='myButton' ng-click="add()">GO</button>
     </section>
 
     <section>
         <ul ng-controller='UserListController'>
-            <li ng-repeat="user in users">
-                <p>{{ user.userInfo.userName }}</p>
-                <p>{{ user.userInfo.pic }}</p>
-                <p>{{ user.userInfo.name }}</p>
-                <p>{{ user.userInfo.week }}</p>
-                <p>{{ user.userInfo.month }}</p>
-                <p>{{ user.userInfo.all }}</p>
-            </li>
+            <user ng-repeat='user in users' which='user'></user>
         </ul>
-    </section>
+    </section>  
 </body>
 
 </html>
