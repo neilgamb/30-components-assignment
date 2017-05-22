@@ -1,0 +1,33 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular.js"></script>
+    <script src="js/app.js"></script>
+    <script src="http://momentjs.com/downloads/moment.js"></script>
+</head>
+
+<body ng-app="GitHubActivityTrackerApp">
+    <h1>Github Activity Tracker</h1>
+
+    <section ng-controller="UserInputController">
+        <input type='text' placeholder="Enter Username" ng-model="user_input">
+        <button ng-click="add()">Add</button>
+    </section>
+
+    <section>
+        <ul ng-controller='UserListController'>
+            <li ng-repeat="user in users">
+                <p>{{ user.userInfo.userName }}</p>
+                <p>{{ user.userInfo.pic }}</p>
+                <p>{{ user.userInfo.name }}</p>
+                <p>{{ user.week }}</p>
+                <p>{{ user.month }}</p>
+                <p>{{ user.all }}</p>
+            </li>
+        </ul>
+    </section>
+</body>
+
+</html>
